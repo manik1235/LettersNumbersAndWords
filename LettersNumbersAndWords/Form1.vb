@@ -10,6 +10,13 @@ Public Class MainForm
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub MainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        ChangeLetterOrColor(e)
+
+        My.Computer.Audio.Play("C:\Users\andre\Documents\Visual Studio 2017\Projects\LettersNumbersAndWords\LettersNumbersAndWords\Assets\Audio\ABCDEFGH.wav", AudioPlayMode.Background)
+
+    End Sub
+
+    Private Sub ChangeLetterOrColor(e As KeyEventArgs)
         If (e.KeyCode >= Keys.A And e.KeyCode <= Keys.Z) Or (e.KeyCode >= Keys.D0 And e.KeyCode <= Keys.D9) Then
             ' If it's a letter or a number, and the label isn't currenlty displaying it, update the lable
             If ((StrConv(Chr(e.KeyCode), VbStrConv.Uppercase)) <> LetterLabel.Text) Then
