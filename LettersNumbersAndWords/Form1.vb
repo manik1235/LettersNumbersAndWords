@@ -12,7 +12,20 @@ Public Class MainForm
     Private Sub MainForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         ChangeLetterOrColor(e)
 
-        My.Computer.Audio.Play("C:\Users\andre\Documents\Visual Studio 2017\Projects\LettersNumbersAndWords\LettersNumbersAndWords\Assets\Audio\ABCDEFGH.wav", AudioPlayMode.Background)
+        My.Computer.Audio.Stop()
+
+        Dim PlayStringBase As String
+        Dim PlayStringName As String
+        Dim PlayStringExtension As String = ".wav"
+        Dim PlayStringFull As String
+
+        PlayStringBase = "C:\Users\andre\Documents\Visual Studio 2017\Projects\LettersNumbersAndWords\LettersNumbersAndWords\Assets\Audio\"
+
+        PlayStringName = StrConv(Chr(e.KeyCode), VbStrConv.Uppercase)
+
+        PlayStringFull = PlayStringBase & PlayStringName & PlayStringExtension
+
+        My.Computer.Audio.Play(PlayStringFull, AudioPlayMode.Background)
 
     End Sub
 
